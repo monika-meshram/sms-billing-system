@@ -14,11 +14,12 @@ Step 3 : Run the container named 'billingContainer' using Image ID
 
 Command : docker run -it -p 9550:9550 --name billingContainer billingsystem
 
-
+----------------------------------------------------------------------------------------------------------
 
 ***Endpoints :***
 
 // To send SMS for a Customer ID - 1
+ 
 
 curl --location --request POST 'http://localhost:9550/billingSystem/message' \
 --header 'Content-Type: application/json' \
@@ -28,4 +29,6 @@ curl --location --request POST 'http://localhost:9550/billingSystem/message' \
 }'
 
 // To Get the Total Bill Amount for current month for Customer ID - 1
+ 
+ 
 curl --location --request GET 'http://localhost:9550/billingSystem/customer/1/bill'
