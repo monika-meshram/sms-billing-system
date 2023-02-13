@@ -4,6 +4,7 @@ import com.sms.billing.Entity.Plan;
 import com.sms.billing.domain.MessageInfo;
 import com.sms.billing.service.strategy.BillCalculatorStrategy;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 

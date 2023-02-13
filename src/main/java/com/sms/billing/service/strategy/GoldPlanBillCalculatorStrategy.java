@@ -2,9 +2,11 @@ package com.sms.billing.service.strategy;
 
 import com.sms.billing.Entity.Plan;
 import com.sms.billing.domain.MessageInfo;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Component
 public class GoldPlanBillCalculatorStrategy implements BillCalculatorStrategy {
 
     @Override

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Component
 public class SilverPlanBillCalculatorStrategy implements BillCalculatorStrategy {
 
     public MessageInfo billCalculation(MessageInfo messageInfo) {

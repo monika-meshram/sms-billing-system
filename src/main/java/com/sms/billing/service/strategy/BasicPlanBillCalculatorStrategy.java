@@ -4,6 +4,7 @@ import com.sms.billing.Entity.Plan;
 import com.sms.billing.domain.MessageInfo;
 import com.sms.billing.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
