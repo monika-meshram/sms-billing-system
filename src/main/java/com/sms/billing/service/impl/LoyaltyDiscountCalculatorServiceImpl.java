@@ -6,7 +6,6 @@ import com.sms.billing.repository.LoyaltyPlanRepository;
 import com.sms.billing.service.LoyaltyDiscountCalculatorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -16,8 +15,11 @@ public class LoyaltyDiscountCalculatorServiceImpl implements LoyaltyDiscountCalc
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private LoyaltyPlanRepository loyaltyPlanRepository;
+    private final LoyaltyPlanRepository loyaltyPlanRepository;
+
+    public LoyaltyDiscountCalculatorServiceImpl(LoyaltyPlanRepository loyaltyPlanRepository) {
+        this.loyaltyPlanRepository = loyaltyPlanRepository;
+    }
 
     @Override
     public MessageInfo calculateDiscountedPrice(MessageInfo messageInfo){
@@ -27,7 +29,7 @@ public class LoyaltyDiscountCalculatorServiceImpl implements LoyaltyDiscountCalc
     if(loyaltyPlan!=null){
         if(messageInfo.getMessageCount()>loyaltyPlan.getMessageCount()){
             logger.info("Loyalty Plan available for customer for Plan : " + messageInfo.getPlan().getName());
-            Long remainingMessageCount = messageInfo.getMessageCount()-loyaltyPlan.getMessageCount();
+            long remainingMessageCount = messageInfo.getMessageCount()-loyaltyPlan.getMessageCount();
             return MessageInfo.builder()
                     .amount(loyaltyPlan.getDiscountedPricePerMessage().multiply(BigDecimal.valueOf(remainingMessageCount)))
                     .plan(messageInfo.getPlan())
