@@ -23,12 +23,6 @@ public class BillingSystemController {
 		this.billCalculatorService = billCalculatorService;
 	}
 
-	@GetMapping(value = "/test")
-	public String test() {
-		logger.info("Test Method");
-		return "Working";
-	}
-
 	@PostMapping(value = "/message")
 	public MessageResponse sendMessage(@RequestBody MessageRequest message) {
 		logger.info("Sending Message");
